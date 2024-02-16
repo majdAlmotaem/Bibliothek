@@ -43,17 +43,16 @@ class Buch: #Bauplan
     #Buchstatus checken
     def Buch_status(isbn):
         if Buch.Buch_check(isbn):
-            # Wenn das Buch existiert, prüfe den Buchstatus in der Ausleihliste
-            buch_status_check = 'SELECT * FROM ausleihliste WHERE `ISBN`=%s AND `Ausgeliehen`="1"'
+            # Wenn das Buch existiert, prüfe den Buchstatus, ob das ausgeliehen ist
+            buch_status_check = 'SELECT * FROM books WHERE `ISBN`=%s AND `ausgeliehen`="1"'
             cursor.execute(buch_status_check, (isbn))
             result = cursor.fetchone()
             if result:
+                print("ok")
                 return True
             else:
-                print("Das Buch ist zurzeit Verfügbar")
                 return False
         else:
-            print("Das Buch ist nicht in unserer Bücherliste.")
             return False
         
     #Bücher anzeigen

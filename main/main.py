@@ -53,7 +53,7 @@ elif user_auswahl == "2":
             print("-"*20)
             User.return_Buch(title_eingabe)
         elif option_Auswahl == "3": #Historie anzeigen
-            User.history_anzeigen
+            User.history_anzeigen(anmelden_vorname,anmelden_nachname)
         else:
             print("Ungültige Eingabe!")
 elif user_auswahl == "3": #Registieren
