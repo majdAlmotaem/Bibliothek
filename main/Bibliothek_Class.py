@@ -14,20 +14,16 @@ cursor = connection.cursor()
 #klasse Bibliothek
 class Bibliothek:
     def __init__(self, vorname, nachname):
-        self.vorname = vorname
-        self.nachname = nachname
+        self.vname = vorname
+        self.nname = nachname
 
     #Benutzer Registieren
-    def registieren():
-        print("----------------------")
-        print("Bitte Daten eingeben")
-        add_vorname = str(input("Vorname: "))
-        add_nachname = str(input("Nachname: "))
-        #sql query schreiben und neue User in Datenbank hinzufügen
-        sql_query = 'INSERT INTO users (`Vorname`, `Nachname`) VALUES (%s, %s)'
-        cursor.execute(sql_query, (add_vorname,add_nachname))
+    def registieren(self, vorname, nachname):
+        sql_query = 'INSERT INTO users (`Vorname`, `Nachname`) VALUES (%s, %s)'  #neue User in Datenbank hinzufügen
+        cursor.execute(sql_query, (vorname,nachname))
         connection.commit()
 
+    #get user id from database
     def find_user_id(vorname, nachname):
         find_user_query = 'SELECT User_Id FROM Users WHERE Vorname=%s AND Nachname=%s'
         cursor.execute(find_user_query, (vorname, nachname))
@@ -37,10 +33,10 @@ class Bibliothek:
         else:
             return None
 
-    #Funktion um zuprüfen, ob der User angemeldet ist.
-    def user_check(vorname, nachname):
+    #Funktion um zuprüfen, ob der User angemeldet ist. (bei Anmelden funktion) 
+    def user_check(vname, nname):
         sql_query = 'SELECT * FROM users WHERE `Vorname`=%s AND `Nachname`=%s'
-        cursor.execute(sql_query, (vorname, nachname))
+        cursor.execute(sql_query, (vname, nname))
         result = cursor.fetchone()
         if result:
             return True

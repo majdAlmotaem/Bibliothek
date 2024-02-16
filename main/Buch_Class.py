@@ -14,8 +14,9 @@ cursor = connection.cursor()
 
 #klasse Buch erstellen
 class Buch: #Bauplan 
-    def __init__(self, title, autor, genre): #Konstruktor
+    def __init__(self, isbn,title, autor, genre): #Konstruktor
         self.title = title
+        self.isbn = isbn
         self.autor = autor
         self.genre = genre
 
@@ -55,11 +56,11 @@ class Buch: #Bauplan
             print("Das Buch ist nicht in unserer Bücherliste.")
             return False
         
-        #Bücher anzeigen
+    #Bücher anzeigen
     def show_books():
         sql_query = 'SELECT * FROM Books'
         num = 1 #zähler für die Bücherliste
-        print("-----------------------")
+        print("-"*20)
         print("Hier ist unsere Bücherliste:")
         cursor.execute(sql_query)
         books = cursor.fetchall()
