@@ -1,7 +1,7 @@
 
 #Verbindung mit SQL-Datenbank herstellen
 import pymysql
-
+#hallo
 connection = pymysql.connect(
     host='localhost',
     user='root',
