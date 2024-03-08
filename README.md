@@ -1,2 +1,3 @@
-# Bibliothek
-Keep it Simple ist eine Gruppe von vier Entwicklern in Schulung, die ihr erstes Projekt angehen. Unser Ziel ist es, ein benutzerfreundliches Bibliotheksverwaltungsprogramm zu erstellen, indem wir alles, was wir bisher gelernt haben, einsetzen.
+# Bibliotheksverwaltungsprojekt
+
+Dies ist ein Open-Source-Projekt zur Verwaltung einer Bibliothek, das mit Python entwickelt wurde. Die Anwendung ermöglicht es Benutzern, sich zu registrieren, Bücher auszuleihen, zurückzugeben und ihre Ausleihhistorie anzuzeigen.
