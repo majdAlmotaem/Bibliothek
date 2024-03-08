@@ -20,7 +20,7 @@ class Buch: #Bauplan
         self.genre = genre
 
     #funktion to get isbn 
-    def get_isbn_by_title(title):
+    def get_isbn_by_title(title:str) -> str:
         get_isbn_query = 'SELECT ISBN FROM books WHERE Title = %s'
         cursor.execute(get_isbn_query, (title,))
         result = cursor.fetchone()
@@ -30,7 +30,7 @@ class Buch: #Bauplan
             return None
 
     #Verfügbarkeitprüfen von Buch
-    def Buch_check(isbn):
+    def Buch_check(isbn:str) -> bool:
         book_status_check = 'SELECT * FROM books WHERE `ISBN`=%s' #wird geprüft ob das Buch in unsere Bibliothek existiert 
         cursor.execute(book_status_check, (isbn))
         result = cursor.fetchone()
@@ -40,7 +40,7 @@ class Buch: #Bauplan
             return False
         
     #Buchstatus checken
-    def Buch_status(isbn):
+    def Buch_status(isbn:str) -> bool:
         if Buch.Buch_check(isbn):
             # Wenn das Buch existiert, prüfe den Buchstatus, ob das ausgeliehen ist
             buch_status_check = 'SELECT * FROM books WHERE `ISBN`=%s AND `ausgeliehen`="1"'
@@ -54,7 +54,7 @@ class Buch: #Bauplan
             return False
         
     #Bücher anzeigen
-    def show_books():
+    def show_books() -> list:
         sql_query = 'SELECT * FROM Books'
         num = 1 #zähler für die Bücherliste
         print("-"*20)

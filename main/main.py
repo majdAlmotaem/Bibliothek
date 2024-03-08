@@ -30,9 +30,9 @@ if user_auswahl == "1": #als Gast fortfahren kann nur die Büchliste angezeigt
     print("Als Gast dürfen Sie nur unsere Bücherliste angucken.\nUm Bücher auszuleihen, müssen Sie Sich bitte registieren!")
     Buch.show_books()
  #Bei Anmeldung soll der User sein Name eingeben, damit geprüft wird, ob der angemeldet ist.
-elif user_auswahl == "2":
-    anmelden_vorname = (input("Vorname: "))
-    anmelden_nachname = (input("Nachname: "))
+elif user_auswahl == "2": #Anmelden
+    anmelden_vorname = input("Vorname: ")
+    anmelden_nachname = input("Nachname: ")
     user_check= Bibliothek.user_check(anmelden_vorname, anmelden_nachname)
     print("-"*20)
     if user_check == False:

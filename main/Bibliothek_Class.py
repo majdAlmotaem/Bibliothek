@@ -18,7 +18,7 @@ class Bibliothek:
         self.nachname = nachname
 
     #Benutzer Registieren
-    def registieren(vorname, nachname):
+    def registieren(vorname: str, nachname: str) -> str:
         if not Bibliothek.user_check(vorname, nachname):
             sql_query = 'INSERT INTO users (`Vorname`, `Nachname`) VALUES (%s, %s)'  #neue User in Datenbank hinzufügen
             cursor.execute(sql_query, (vorname,nachname))
@@ -28,7 +28,7 @@ class Bibliothek:
             print("Der User existiert schon!")
 
     #get user id from database
-    def find_user_id(vorname, nachname):
+    def find_user_id(vorname: str, nachname: str) -> bool:
         find_user_query = 'SELECT User_Id FROM Users WHERE Vorname=%s AND Nachname=%s'
         cursor.execute(find_user_query, (vorname, nachname))
         result = cursor.fetchone()
@@ -38,7 +38,7 @@ class Bibliothek:
             return None
 
     #Funktion um zuprüfen, ob der User angemeldet ist. (bei Anmelden funktion) 
-    def user_check(vorname, nachname):
+    def user_check(vorname: str, nachname: str) -> bool:
         sql_query = 'SELECT * FROM users WHERE `Vorname`=%s AND `Nachname`=%s'
         cursor.execute(sql_query, (vorname, nachname))
         result = cursor.fetchone()
