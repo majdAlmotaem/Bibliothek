@@ -1,4 +1,3 @@
-
 #Verbindung mit SQL-Datenbank herstellen
 import pymysql
 
@@ -48,7 +47,6 @@ class Buch: #Bauplan
             cursor.execute(buch_status_check, (isbn))
             result = cursor.fetchone()
             if result:
-                print("ok")
                 return True
             else:
                 return False
