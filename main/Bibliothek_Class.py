@@ -14,14 +14,18 @@ cursor = connection.cursor()
 #klasse Bibliothek
 class Bibliothek:
     def __init__(self, vorname, nachname):
-        self.vname = vorname
-        self.nname = nachname
+        self.vorname = vorname
+        self.nachname = nachname
 
     #Benutzer Registieren
-    def registieren(self, vorname, nachname):
-        sql_query = 'INSERT INTO users (`Vorname`, `Nachname`) VALUES (%s, %s)'  #neue User in Datenbank hinzufügen
-        cursor.execute(sql_query, (vorname,nachname))
-        connection.commit()
+    def registieren(vorname, nachname):
+        if not Bibliothek.user_check(vorname, nachname):
+            sql_query = 'INSERT INTO users (`Vorname`, `Nachname`) VALUES (%s, %s)'  #neue User in Datenbank hinzufügen
+            cursor.execute(sql_query, (vorname,nachname))
+            connection.commit()
+            print("User wurde erfolgreich registiert.")
+        else:
+            print("Der User existiert schon!")
 
     #get user id from database
     def find_user_id(vorname, nachname):
@@ -34,9 +38,9 @@ class Bibliothek:
             return None
 
     #Funktion um zuprüfen, ob der User angemeldet ist. (bei Anmelden funktion) 
-    def user_check(vname, nname):
+    def user_check(vorname, nachname):
         sql_query = 'SELECT * FROM users WHERE `Vorname`=%s AND `Nachname`=%s'
-        cursor.execute(sql_query, (vname, nname))
+        cursor.execute(sql_query, (vorname, nachname))
         result = cursor.fetchone()
         if result:
             return True
