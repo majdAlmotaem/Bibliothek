@@ -59,8 +59,11 @@ elif user_auswahl == "2":
 elif user_auswahl == "3": #Registieren
     print("-"* 20)
     print("Bitte Daten eingeben")
-    add_vorname = Bibliothek(input("Vorname: "))
-    add_nachname = Bibliothek(input("Nachname: "))
-    Bibliothek.registieren(add_vorname,add_nachname)
+    add_vorname = input("Vorname: ")
+    add_nachname = input("Nachname: ")
+    if add_vorname and add_nachname:
+        Bibliothek.registieren(add_vorname,add_nachname)
+    else: 
+        print("Bitte alle Felder ausfüllen!")
 else:
     print("Ungültige Eingabe!")
