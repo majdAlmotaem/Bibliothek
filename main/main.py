@@ -2,26 +2,12 @@
 from Bibliothek_Class import Bibliothek
 from Buch_Class import Buch
 from User_Class import User
-
-#Verbindung mit SQL-Datenbank herstellen
-import pymysql
-
-connection = pymysql.connect(
-    host='localhost',
-    user='root',
-    password='',
-    db='Bibliothek',
-    charset= 'utf8mb4',
-    cursorclass= pymysql.cursors.DictCursor
-)
-cursor = connection.cursor()    
-            
-        
+         
 #Begrüßung 
 print("------ Willkommen in unserer Bibliothek ------")
 
 #Frage ob der User angemeldet ist 
-print("1. Als Gast fortfahren\n2. Anmelden\n3. Regstieren")
+print("1. Als Gast fortfahren\n2. Anmelden\n3. Regstieren\n4. Kategorie auswählen")
 user_auswahl = input('')
 
 #Menü
@@ -65,5 +51,9 @@ elif user_auswahl == "3": #Registieren
         Bibliothek.registieren(add_vorname,add_nachname)
     else: 
         print("Bitte alle Felder ausfüllen!")
+elif user_auswahl == "4": #Buch suchen
+    print("-"* 20)
+    genre = input("Roman\nScience Fi\nThriller\nHorror\nFantasy\nWählen Sie eine Kategorie aus: ")
+    Buch.search_book_by_genre(genre)
 else:
     print("Ungültige Eingabe!")
