@@ -9,6 +9,7 @@ class Bibliothek:
 
     #Benutzer Registieren
     def registieren(vorname: str, nachname: str) -> str:
+        """muss erstmal geprüft, ob der User angemeldet ist""" #Docstring
         if not Bibliothek.user_check(vorname, nachname):
             sql_query = 'INSERT INTO users (`Vorname`, `Nachname`) VALUES (%s, %s)'  #neue User in Datenbank hinzufügen
             cursor.execute(sql_query, (vorname,nachname))
